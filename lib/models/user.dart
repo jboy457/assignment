@@ -16,7 +16,7 @@ class User {
       this.lastName,
       this.email,
       this.password,
-      required this.token,
+      this.token,
       this.updatedAt,
       this.createdAt});
 

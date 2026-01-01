@@ -1,4 +1,5 @@
 import 'package:assignment/constants/app_images.dart';
+import 'package:assignment/pages/account/account_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,142 +34,123 @@ class HomePage extends GetView<HomeController> {
       padding: EdgeInsets.symmetric(
         vertical: size.height * 0.04,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  'https://picsum.photos/200/300',
-                  width: 50,
-                  height: 50,
-                  fit: BoxFit.fill,
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                'Hi Ade',
-                style: theme.textTheme.headlineLarge,
-              ),
-              const Spacer(),
-              const Icon(
-                Icons.more_vert_outlined,
-                size: 30,
-              )
-            ],
-          ),
-          Container(
-            width: size.width,
-            height: size.height * 0.13,
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.8),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            padding: const EdgeInsets.all(15),
-            margin: const EdgeInsets.only(top: 20),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(
-                    Icons.workspace_premium_outlined,
-                    size: 30,
-                    color: Colors.white.withOpacity(0.5),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    'https://picsum.photos/200/300',
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.fill,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Go Premium',
-                        style: theme.textTheme.headlineMedium!.copyWith(
-                          fontSize: 15,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: size.width * 0.7,
-                        child: Text(
-                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-                          maxLines: 2,
-                          style: theme.textTheme.bodySmall!.copyWith(
-                            fontSize: 13,
-                            color: Colors.grey,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Hi ${accountContrroller.user.value.firstName}',
+                  style: theme.textTheme.headlineLarge,
+                ),
+                const Spacer(),
+                const Icon(
+                  Icons.more_vert_outlined,
+                  size: 30,
+                )
+              ],
+            ),
+            Container(
+              width: size.width,
+              height: size.height * 0.13,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              padding: const EdgeInsets.all(15),
+              margin: const EdgeInsets.only(top: 20),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(
+                      Icons.workspace_premium_outlined,
+                      size: 30,
+                      color: Colors.white.withOpacity(0.5),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Go Premium',
+                          style: theme.textTheme.headlineMedium!.copyWith(
+                            fontSize: 15,
+                            color: Colors.white,
                           ),
                         ),
-                      ),
-                    ],
-                  )
-
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.end,
-                  //   children: [
-                  //     Container(
-                  //       padding: const EdgeInsets.symmetric(
-                  //         vertical: 5,
-                  //         horizontal: 10,
-                  //       ),
-                  //       decoration: BoxDecoration(
-                  //         color: Colors.white.withOpacity(0.5),
-                  //         borderRadius: BorderRadius.circular(10),
-                  //       ),
-                  //       child: Text(
-                  //         '$left Left',
-                  //         style: theme.textTheme.bodySmall!
-                  //             .copyWith(color: color, fontSize: 12),
-                  //       ),
-                  //     )
-                  //   ],
-                  // )
-                ]),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 25.0, bottom: 15),
-            child: Text(
-              'Tasks',
-              style: theme.textTheme.headlineMedium,
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          width: size.width * 0.7,
+                          child: Text(
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+                            maxLines: 2,
+                            style: theme.textTheme.bodySmall!.copyWith(
+                              fontSize: 13,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
             ),
-          ),
-          SizedBox(
-            height: size.height * 0.5,
-            child: GridView(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10),
-                children: const [
-                  TaskGrid(
-                    title: 'Assignment',
-                    left: '2',
-                    icon: Icons.assignment,
-                    color: Colors.orange,
-                  ),
-                  TaskGrid(
-                    title: 'Courses',
-                    left: '2',
-                    icon: Icons.notes,
-                    color: Colors.pink,
-                  ),
-                  TaskGrid(
-                    title: 'My Courses',
-                    left: '2',
-                    icon: Icons.now_widgets_outlined,
-                    color: Colors.purple,
-                  ),
-                  TaskGrid(
-                    title: 'My Result(Upcoming)',
-                    left: '2',
-                    icon: Icons.app_registration_outlined,
-                    color: Colors.blue,
-                  ),
-                ]),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.only(top: 25.0, bottom: 15),
+              child: Text(
+                'Tasks',
+                style: theme.textTheme.headlineMedium,
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.5,
+              child: GridView(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10),
+                  children: const [
+                    TaskGrid(
+                      title: 'Assignment',
+                      left: '2',
+                      icon: Icons.assignment,
+                      color: Colors.orange,
+                    ),
+                    TaskGrid(
+                      title: 'Courses',
+                      left: '2',
+                      icon: Icons.notes,
+                      color: Colors.pink,
+                    ),
+                    TaskGrid(
+                      title: 'My Courses',
+                      left: '2',
+                      icon: Icons.now_widgets_outlined,
+                      color: Colors.purple,
+                    ),
+                    TaskGrid(
+                      title: 'My Result(Upcoming)',
+                      left: '2',
+                      icon: Icons.app_registration_outlined,
+                      color: Colors.blue,
+                    ),
+                  ]),
+            )
+          ],
+        ),
       ),
     ));
   }

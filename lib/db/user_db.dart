@@ -26,7 +26,7 @@ class UserPreferences {
     String? firstname = prefs.getString("firstname");
     String? lastname = prefs.getString("lastname");
     String? email = prefs.getString("email");
-    String role = prefs.getString("role")!;
+    String? role = prefs.getString("role");
     String? token = prefs.getString("token");
 
     return User(

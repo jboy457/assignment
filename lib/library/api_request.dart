@@ -13,7 +13,7 @@ class ApiRequest {
         validateStatus: (status) {
           return status! <= 500;
         },
-        headers: {'Authorization': 'Bearer $token'},
+        headers: {'Authorization': token},
       ),
     );
   }
